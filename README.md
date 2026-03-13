@@ -65,8 +65,6 @@ This project provides an ML-based solution that analyzes uploaded images to:
 | Affected Area Displayed | Yes (percentage of affected pixels) |
 | Confidence Gating | Yes (low-confidence class marked tentative) |
 
----
-
-
+--
 
 
