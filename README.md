@@ -67,10 +67,6 @@ This project provides an ML-based solution that analyzes uploaded images to:
 
 ---
 
-## Sample Results
-![file:///home/s-ananya/Pictures/Screenshots/Screenshot%20from%202026-03-13%2015-34-06.png]
-
-
 
 
 
