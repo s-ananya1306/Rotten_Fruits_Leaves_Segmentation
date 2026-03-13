@@ -1,11 +1,5 @@
-# Real-Time Leaf Disease Detection using Color Segmentation and Morphological Operations
+#  Leaf and Fruits Disease Detection using Color Segmentation and Morphological Operations
 
-## Team Members
-- **S Ananya** - 4SO22CD042
-- **Sahana Rao** - 4SO22CD043
-- **Tharakan Vidya Ravunni** - 4SO22CD059
-
----
 
 ## Problem Statement
 
