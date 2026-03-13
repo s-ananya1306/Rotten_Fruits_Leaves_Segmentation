@@ -1,0 +1,6 @@
+Segmentationproj/venv/
+venv/
+__pycache__/
+*.pyc
+Segmentationproj/.idea/
+.idea/
