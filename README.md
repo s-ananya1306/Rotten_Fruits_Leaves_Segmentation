@@ -9,49 +9,76 @@
 
 ## Problem Statement
 
-In agriculture, timely detection of diseases in leaves is crucial to prevent crop loss and improve yield. This project provides a solution to detect diseases in leaves by analyzing images or live video feeds from a webcam. The system:
-- Detects potential diseases in leaves based on color segmentation.
-- Provides a visual representation of affected areas.
-- Calculates the percentage of the leaf affected by disease.
+In agriculture, timely detection of diseases in leaves and fruits is essential to prevent crop loss and improve yield.  
+This project provides an ML-based solution that analyzes uploaded images to:
+
+- Detect whether the sample is healthy or diseased.
+- Highlight potentially affected regions visually.
+- Estimate the percentage of the sample area impacted by visible symptoms.
+- Report disease class predictions with confidence-aware interpretation.
 
 ---
 
 ## Techniques Used
 
-- **Color Segmentation (HSV)**: Detects areas of the leaf with color patterns indicating disease.
-- **Morphological Operations**: Used to clean up the detected regions for more accurate results (using `open` and `close` operations).
-- **Image Analysis**: Processes leaf images to highlight the affected regions and compute the percentage of the leaf that is diseased.
-- **Real-Time Webcam Feed**: Uses OpenCV to process live video streams and detect diseases in real-time.
+- **Color Segmentation (HSV)**: Detects visually suspicious regions based on color variation.
+- **Morphological Operations**: Cleans segmented masks using `open` and `close` operations.
+- **Feature Engineering**:
+  - HOG (shape/gradient texture)
+  - LBP (local texture patterns)
+  - Color statistics (BGR/HSV/LAB)
+  - HSV histogram
+  - Shape features (edge density + Hu moments)
+- **Machine Learning Classifier**:
+  - `StandardScaler + PCA + SVC (RBF)` for disease classification.
+- **Confidence-Aware Reporting**:
+  - Low-confidence class outputs are marked as **tentative** instead of final diagnosis.
 
 ---
 
 ## Program Flow
 
-1. **Select Mode**: Choose between analyzing a static leaf image or running real-time detection using a webcam.
-2. **Leaf Image Analysis**:
-   - Load and preprocess the leaf image.
-   - Apply color segmentation in HSV to detect potential diseased areas.
-   - Clean the segmented mask using morphological operations.
-   - Display results showing the percentage of the leaf affected by disease.
-3. **Real-Time Webcam Detection**:
-   - Capture video feed from the webcam.
-   - Detect diseased regions in real-time.
-   - Highlight diseased areas with a red overlay.
-   - Display the real-time feed with marked affected regions.
-4. **Exit the Program**: Press 'q' or close the window to exit the real-time detection mode.
+1. **Upload Input**
+   - User uploads a leaf or fruit image in the Streamlit app.
+
+2. **Preprocessing**
+   - Convert image to HSV.
+   - Segment plant region and isolate primary sample.
+   - Generate cleaned disease mask via morphological operations.
+
+3. **Feature Extraction & Prediction**
+   - Extract multi-feature descriptor from isolated sample.
+   - Predict class using trained SVC pipeline.
+   - Derive overall health status (`Healthy` / `Diseased`) and confidence.
+
+4. **Result Dashboard**
+   - Show prediction, confidence, severity, and affected-area percentage.
+   - Visualize original image, disease mask, detected overlay, and isolation mask.
+   - Display written summary with confidence-aware class interpretation.
+
+5. **User Interpretation**
+   - If class confidence is low, result is shown as a **low-confidence estimate**.
 
 ---
 
 ## Evaluation Metrics
 
-| Metric                       | Value                             |
-|-----------------------------|------------------------------------|
-| Disease Detection Method    | Color Segmentation (HSV)           |
-| Morphological Operations    | Open and Close for cleaning        |
-| Real-Time FPS               | ~20-30 FPS on standard webcam      |
-| Affected Area Displayed     | Yes (percentage of affected pixels) |
+| Metric | Value |
+|---|---|
+| Disease Detection Method | HSV-based segmentation + ML classification |
+| Morphological Operations | Open and Close for mask cleaning |
+| Inference Output | Healthy/Diseased + disease class (confidence-aware) |
+| Affected Area Displayed | Yes (percentage of affected pixels) |
+| Confidence Gating | Yes (low-confidence class marked tentative) |
 
 ---
+
+## Sample Results
+
+![Screenshot 2025-05-05 141627](https://github.com/user-attachments/assets/fe205c66-99ee-41fa-aac6-d7f69c4695db)
+
+![Screenshot 2025-05-05 141026](https://github.com/user-attachments/assets/936fcf88-9bf8-412c-af1e-c8b60a07d210)
+
 
 ## Sample Results
 
