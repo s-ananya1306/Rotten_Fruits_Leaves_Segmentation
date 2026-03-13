@@ -68,16 +68,9 @@ This project provides an ML-based solution that analyzes uploaded images to:
 ---
 
 ## Sample Results
-
-![Screenshot 2025-05-05 141627](https://github.com/user-attachments/assets/fe205c66-99ee-41fa-aac6-d7f69c4695db)
-
-![Screenshot 2025-05-05 141026](https://github.com/user-attachments/assets/936fcf88-9bf8-412c-af1e-c8b60a07d210)
+![file:///home/s-ananya/Pictures/Screenshots/Screenshot%20from%202026-03-13%2015-34-06.png]
 
 
-## Sample Results
 
----
-![Screenshot 2025-05-05 141627](https://github.com/user-attachments/assets/fe205c66-99ee-41fa-aac6-d7f69c4695db)
 
-![Screenshot 2025-05-05 141026](https://github.com/user-attachments/assets/936fcf88-9bf8-412c-af1e-c8b60a07d210)
 
